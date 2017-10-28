@@ -2,8 +2,6 @@
 import os
 from geopy.geocoders import Nominatim
 from pyicloud import PyiCloudService
-import time
-import requests
 
 userName = os.environ['ICLOUD_USERNAME']
 passWord = os.environ['ICLOUD_PASSWORD']
@@ -35,7 +33,8 @@ def findLocation(device, devices):
                 road = location.raw['address']['road']
                 neighbourhood = location.raw['address']['neighbourhood']
                 postcode = location.raw['address']['postcode']
-                print(deviceName + ': ' + houseNumber + ',' + road + ',' + neighbourhood + ',' + postcode)
+                #print(deviceName + ': ' + houseNumber + ',' + road + ',' + neighbourhood + ',' + postcode)
+                #return(deviceName + ': ' + houseNumber + ',' + road + ',' + neighbourhood + ',' + postcode)
         except:
             pass
 
@@ -46,4 +45,6 @@ if __name__ == '__main__':
     device = L.devices
     devices = deviceCount(device)
     findLocation(device,devices)
-    batterLevel(device,devices)
+    
+    
+    #batterLevel(device,devices)
