@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 import os
 from geopy.geocoders import Nominatim
 from pyicloud import PyiCloudService
@@ -18,19 +18,26 @@ def batteryLevel(device):
     pass
 
 
-
 def findLocation(device, devices):
     for x in range(devices):
         try:
             deviceName = str(device[x]).split(':')[1].replace(' ','')
             deviceLocation = device[x].location()
-            if deviceLocation == 'None':
+            if deviceLocation == None: 
                 pass
-            deviceLatitude = deviceLocation['latitude']
-            deviceLongitude = deviceLocation['longitude']
-            coordination = deviceLatitude, deviceLongitude
-            location = geolocator.reverse(coordination)
-            print(location)
+            else:
+                print(deviceName)
+                deviceLatitude = deviceLocation['latitude']
+                deviceLongitude = deviceLocation['longitude']
+                coordination = deviceLatitude, deviceLongitude
+                print(coordination)
+                location = geolocator.reverse(coordination)
+                #location.address
+                houseNumber = location.raw['address']['house_number']
+                road = location.raw['address']['road']
+                neighbourhood = location.raw['address']['neighbourhood']
+                postcode = location.raw['address']['postcode']
+                print(houseNumber + ',' + road + ',' + neighbourhood + ',' + postcode)
         except:
             pass
 
