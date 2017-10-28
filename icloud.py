@@ -33,7 +33,7 @@ def findLocation(device, devices):
                 road = location.raw['address']['road']
                 neighbourhood = location.raw['address']['neighbourhood']
                 postcode = location.raw['address']['postcode']
-                #print(deviceName + ': ' + houseNumber + ',' + road + ',' + neighbourhood + ',' + postcode)
+                print(deviceName + ': ' + houseNumber + ',' + road + ',' + neighbourhood + ',' + postcode)
                 #return(deviceName + ': ' + houseNumber + ',' + road + ',' + neighbourhood + ',' + postcode)
         except:
             pass

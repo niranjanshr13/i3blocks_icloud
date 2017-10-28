@@ -21,7 +21,8 @@ def deviceUUID(device):
 
 def deviceName(device):
     try:
-        deviceName = str(device[x]).split(':')[1].replace(' ','')
+        deviceName = device.split(':')[1].replace(' ','')
+        print(deviceName)
         deviceLocation = device[x].location()
         if deviceLocation == None:
             pass
@@ -30,7 +31,8 @@ def deviceName(device):
         pass
 
 
-def findCoordination(deviceLocation):
+def findCoordination(device):
+    deviceLocation = device.location()
     deviceLatitude = deviceLocation['latitude']
     deviceLongitude = deviceLocation['longitude']
     coordination = deviceLatitude, deviceLongitude
@@ -52,10 +54,13 @@ def findAddress(coordination):
 if __name__ == '__main__':
     L = PyiCloudService(userName,passWord)
     device = L.devices
-    x = deviceUUID(device)
-    print(x)
-    #print(dict(device))
-    #print(device)
+    devices = deviceUUID(device)
+    for x in range(len(devices)):
+        deviceNamex = deviceName(devices[x])
+        print(deviceNamex)
+        #findCoordinationx = findCoordination(devices[x])
+        #findAddressx = findAddress(devices[x])
+        #print(deviceNamex + ',' + findCoordinationx + ',' + findAddressx)
     #geolocator = Nominatim()
     #devices = deviceCount(device)
     #findLocation(device,devices)
